@@ -1,0 +1,1897 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "text": {
+          "ops": [
+            {
+              "insert": "Executive Inbox Items"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "13e9623b-5f87-40c3-8730-12489a2149f9",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Microsoft Teams Integration Project",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@rec1": "Schedule immediate technical review meeting with IT security team. Evaluate integration complexity and resource requirements. Prepare compliance checklist for Microsoft enterprise solutions.",
+              "@comp1": "Microsoft Corporation",
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-16"
+                }
+              },
+              "@urg1": {
+                "type": "Select",
+                "optionId": "high"
+              },
+              "@send1": "sarah.chen@microsoft.com",
+              "@recv1": "it-team@ourcompany.com",
+              "@dept1": {
+                "type": "Select",
+                "optionId": "it"
+              },
+              "@summ1": "Microsoft is proposing a Teams integration project with our existing systems. Timeline is aggressive with Q1 deadline. Requires IT architecture review and security compliance assessment.",
+              "@type1": {
+                "type": "Select",
+                "optionId": "email"
+              },
+              "@note1": "Auto-detected from email domain",
+              "@cont1": "From: Sarah Chen <sarah.chen@microsoft.com>\nTo: it-team@ourcompany.com\nSubject: URGENT: Microsoft Teams Integration Proposal - Q1 Deadline\n\nHi Team,\n\nI hope this email finds you well. I'm reaching out from Microsoft Corporation regarding the Teams integration project we discussed.\n\nWe need to move quickly on this initiative as the deadline is approaching fast. The integration will require:\n- API connectivity setup\n- Security compliance review\n- User authentication protocols\n- Data migration planning\n\nThis is time-sensitive and requires immediate attention from your IT architecture team.\n\nBest regards,\nSarah Chen\nSenior Solutions Architect\nMicrosoft Corporation\nsarah.chen@microsoft.com\n+1 (425) 555-0123"
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "9da2faee-27ea-4528-b814-b4563331fb5a",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Goldman Sachs Investment Opportunity",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@rec1": "Schedule presentation with investment committee. Conduct thorough due diligence review. Prepare risk assessment and financial impact analysis for board consideration.",
+              "@comp1": "Goldman Sachs",
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-15"
+                }
+              },
+              "@urg1": {
+                "type": "Select",
+                "optionId": "medium"
+              },
+              "@send1": "james.rodriguez@gs.com",
+              "@recv1": "cfo@ourcompany.com",
+              "@dept1": {
+                "type": "Select",
+                "optionId": "finance"
+              },
+              "@summ1": "Goldman Sachs presenting investment opportunity for portfolio diversification. Minimum investment $5M with projected 12-15% returns. Requires board approval and due diligence review.",
+              "@type1": {
+                "type": "Select",
+                "optionId": "email"
+              },
+              "@note1": "Detected from signature and domain",
+              "@cont1": "From: James Rodriguez <james.rodriguez@gs.com>\nTo: cfo@ourcompany.com\nSubject: Investment Opportunity - Portfolio Diversification\n\nDear CFO,\n\nI trust you are doing well. I wanted to present an exclusive investment opportunity that aligns with your company's growth strategy.\n\nOur research team has identified a portfolio diversification opportunity with the following highlights:\n- Minimum investment: $5,000,000\n- Projected annual returns: 12-15%\n- Investment horizon: 3-5 years\n- Risk profile: Moderate to high\n\nThis opportunity requires board-level approval and we recommend conducting thorough due diligence.\n\nI would be happy to schedule a presentation with your investment committee.\n\nBest regards,\n\nJames Rodriguez\nVice President, Investment Banking\nGoldman Sachs & Co. LLC\n200 West Street, New York, NY 10282\njames.rodriguez@gs.com\nDirect: +1 (212) 555-7890"
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "40b4888a-a42f-45ef-9a7e-ebb3ff183218",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Salesforce Marketing Campaign Analytics",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@rec1": "Approve additional marketing budget for Q1. Expand successful campaign strategies. Consider upgrading Salesforce Marketing Cloud subscription for advanced analytics capabilities.",
+              "@comp1": "Salesforce",
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-14"
+                }
+              },
+              "@urg1": {
+                "type": "Select",
+                "optionId": "low"
+              },
+              "@send1": "Marketing Team",
+              "@recv1": "Executive Team",
+              "@dept1": {
+                "type": "Select",
+                "optionId": "marketing"
+              },
+              "@summ1": "Marketing team reporting on Salesforce campaign performance. Q4 campaigns exceeded targets by 23%. Recommending increased budget allocation for digital advertising and lead nurturing programs.",
+              "@type1": {
+                "type": "Select",
+                "optionId": "voice"
+              },
+              "@note1": "Voice note from marketing meeting",
+              "@cont1": "Voice Note Transcript - Marketing Team Meeting\n\nHey everyone, this is Lisa from the marketing team. I wanted to give you an update on our Salesforce campaign performance for Q4.\n\nThe results have been fantastic - we exceeded our lead generation targets by 23% and our conversion rates improved significantly. The Salesforce Marketing Cloud integration has been a game-changer for our campaign analytics and customer segmentation.\n\nKey highlights:\n- Email campaigns: 34% open rate, 8.2% click-through rate\n- Social media advertising: 156% increase in qualified leads\n- Lead nurturing: 67% improvement in sales-qualified leads\n- Customer acquisition cost decreased by 18%\n\nWe're seeing strong ROI on our digital advertising spend, especially in the B2B segment. I recommend we increase our marketing budget for Q1 to capitalize on this momentum.\n\nThe Salesforce platform is giving us incredible insights into customer behavior and campaign performance. We should consider upgrading to their advanced analytics package.\n\nLet me know if you need any additional details or want to schedule a deeper dive into the metrics.\n\nThanks!"
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "7cf91238-5051-430d-82fb-289bb25e78ee",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Amazon Web Services Security Audit",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@rec1": "Implement emergency security patches within 48 hours. Enable AWS CloudTrail logging and GuardDuty monitoring. Schedule security training for development team and review access policies.",
+              "@comp1": "Amazon Web Services",
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-13"
+                }
+              },
+              "@urg1": {
+                "type": "Select",
+                "optionId": "high"
+              },
+              "@send1": "AWS Security Team",
+              "@recv1": "IT Security",
+              "@dept1": {
+                "type": "Select",
+                "optionId": "it"
+              },
+              "@summ1": "AWS security audit reveals critical vulnerabilities in cloud infrastructure. Immediate remediation required for SOC 2 compliance. Multi-factor authentication and encryption protocols need updates.",
+              "@type1": {
+                "type": "Select",
+                "optionId": "written"
+              },
+              "@note1": "Security compliance documentation",
+              "@cont1": "CONFIDENTIAL - AWS SECURITY AUDIT REPORT\n\nAmazon Web Services - Security Assessment\nDate: January 13, 2025\nPrepared by: AWS Security Team\n\nEXECUTIVE SUMMARY:\n\nOur comprehensive security audit of your AWS infrastructure has identified several critical areas requiring immediate attention:\n\nCRITICAL FINDINGS:\n1. IAM policies are overly permissive - 67% of users have admin access\n2. S3 buckets lack proper encryption at rest\n3. CloudTrail logging is disabled on 3 production accounts\n4. Multi-factor authentication not enforced for privileged users\n5. Security groups allow unrestricted inbound access\n\nCOMPLIANCE IMPACT:\n- SOC 2 Type II certification at risk\n- PCI DSS compliance gaps identified\n- GDPR data protection concerns\n\nIMMEDIATE ACTIONS REQUIRED:\n- Enable MFA for all administrative accounts\n- Implement least-privilege access policies\n- Enable encryption for all S3 buckets\n- Activate AWS GuardDuty and CloudTrail\n- Review and restrict security group rules\n\nTIMELINE: Critical items must be addressed within 48 hours\n\nThis report contains sensitive security information and should be shared only with authorized personnel.\n\nAWS Security Team\nsecurity@aws.amazon.com"
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Quarterly Budget Review Meeting",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@rec1": "Schedule emergency budget committee meeting within 48 hours. Prepare revised financial forecasts and risk mitigation strategies.",
+              "@comp1": {
+                "type": "Select",
+                "optionId": "comp-1"
+              },
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-15"
+                }
+              },
+              "@urg1": {
+                "type": "Select",
+                "optionId": "high"
+              },
+              "@send1": "sarah.johnson@techcorp.com",
+              "@recv1": "executives@techcorp.com",
+              "@dept1": {
+                "type": "Select",
+                "optionId": "finance"
+              },
+              "@summ1": "CFO requesting urgent budget review meeting for Q4 projections. Revenue targets need adjustment due to market conditions. Immediate executive approval required.",
+              "@type1": {
+                "type": "Select",
+                "optionId": "email"
+              },
+              "@note1": "Important budget discussion for Q4",
+              "@cont1": "Subject: URGENT - Q4 Budget Review Required\n\nDear Executive Team,\n\nWe need to convene an emergency budget review meeting to address significant variances in our Q4 projections. Market volatility has impacted our revenue streams, requiring immediate strategic adjustments.\n\nKey issues:\n- 15% revenue shortfall in enterprise sales\n- Increased operational costs due to supply chain disruptions\n- Need to reallocate resources for digital transformation initiatives\n\nPlease confirm your availability for this week.\n\nBest regards,\nSarah Johnson, CFO"
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "b2c3d4e5-f678-90ab-cdef-1234567890ab",
+            "text": {
+              "ops": [
+                {
+                  "insert": "New Product Launch Campaign Strategy",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@rec1": "Approve marketing budget and establish cross-functional launch team. Coordinate with sales for lead generation strategy and customer success for onboarding processes.",
+              "@comp1": {
+                "type": "Select",
+                "optionId": "comp-2"
+              },
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-14"
+                }
+              },
+              "@urg1": {
+                "type": "Select",
+                "optionId": "medium"
+              },
+              "@send1": "Marketing Team",
+              "@recv1": "Product Development",
+              "@dept1": {
+                "type": "Select",
+                "optionId": "marketing"
+              },
+              "@summ1": "Marketing team proposes comprehensive campaign for new AI-powered analytics platform. Targeting enterprise clients with $2M budget allocation. Launch planned for Q2 2025.",
+              "@type1": {
+                "type": "Select",
+                "optionId": "voice"
+              },
+              "@note1": "Marketing team's proposal for Q2 launch",
+              "@cont1": "Voice Note Transcript: Hey team, this is Mike from marketing. I wanted to share our strategy for the new AI analytics platform launch. We're looking at a $2M campaign budget targeting Fortune 500 companies. The campaign will include digital advertising, thought leadership content, and industry conference presence. We need approval by end of month to meet Q2 launch timeline. The ROI projections show 300% return within 18 months based on our pilot customer feedback."
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "c3d4e5f6-7890-abcd-ef12-34567890abcd",
+            "text": {
+              "ops": [
+                {
+                  "insert": "IT Security Compliance Audit",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@rec1": "Allocate emergency budget for security upgrades. Implement multi-factor authentication across all systems. Schedule board presentation on cybersecurity strategy.",
+              "@comp1": {
+                "type": "Select",
+                "optionId": "comp-3"
+              },
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-13"
+                }
+              },
+              "@urg1": {
+                "type": "Select",
+                "optionId": "high"
+              },
+              "@send1": "IT Security Team",
+              "@recv1": "Board of Directors",
+              "@dept1": {
+                "type": "Select",
+                "optionId": "it"
+              },
+              "@summ1": "Annual security audit reveals critical vulnerabilities in legacy systems. Immediate remediation required for SOC 2 compliance. Budget approval needed for security infrastructure upgrades.",
+              "@type1": {
+                "type": "Select",
+                "optionId": "written"
+              },
+              "@note1": "Annual security review findings",
+              "@cont1": "CONFIDENTIAL SECURITY AUDIT REPORT\n\nExecutive Summary:\nOur annual security assessment has identified several critical vulnerabilities that require immediate attention:\n\n1. Legacy systems lack current security patches\n2. Employee access controls need strengthening\n3. Data encryption protocols require updates\n4. Incident response procedures need revision\n\nRecommended Actions:\n- Immediate security patch deployment\n- Implementation of zero-trust architecture\n- Enhanced employee security training\n- Third-party security assessment\n\nEstimated cost: $500K\nTimeline: 90 days for critical items\n\nThis report is classified and should be shared only with executive leadership."
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "5bc36651-00c7-4bc6-b2ea-ac129edb7613",
+            "text": {
+              "ops": [
+                {
+                  "insert": "📥 Email & Upload System Testing",
+                  "attributes": {
+                    "bold": true
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "c6745dab-6b7a-41f9-aa60-e1067775a8ae",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Does the system correctly receive and process emails with attachments?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "a32be49c-acf7-4d39-bd4f-25a8e5ea66eb",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "What will be the email address that users can send notes and emails to?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "4a67d380-875b-4a1c-af0d-4f20a282e4c1",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are all file types supported (PDF, Word, images, etc.)?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "medium"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "29ed2374-564e-46d5-b59c-c9cc3a92eec7",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Is the sender's identity correctly linked to the document?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "3fefbfb1-2270-4f93-aa6d-35615feafed9",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are documents automatically uploaded to the correct cloud folder?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "e36f6585-d81c-4e15-8438-6b3d513f9c24",
+            "text": {
+              "ops": [
+                {
+                  "insert": "🧠 AI Document Processing Testing",
+                  "attributes": {
+                    "bold": true
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "7f686a49-8bb7-43ce-85db-fcc034322cba",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are documents being sorted into the correct categories?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "806435bb-b396-492c-ad08-ff7de1eaa1da",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Is deduplication working as expected?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "medium"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "48eab815-9c73-4799-a566-f61acf94ab8f",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are summaries accurate and relevant?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "477bca26-e9f8-457a-a7d2-a88935f9f68d",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Is metadata (dates, companies, names) being detected properly?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "db84ec64-62c3-4fbf-822d-b7a9663772c6",
+            "text": {
+              "ops": [
+                {
+                  "insert": "🔍 Query Handling Agent Testing",
+                  "attributes": {
+                    "bold": true
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "202ad62f-fb76-4fad-bc65-be6a6ab7ab4b",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Can the AI agent respond to unexpected document types?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "medium"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "7600d6a2-b92f-4a11-958e-54a568f935e3",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Does it understand natural language queries like \"Show me last week's notes\"?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "e79bb5aa-a00d-4a5c-af3a-3cf32d4c1057",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Can it summarize or recall specific documents on request?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "b74bdb5b-a223-4c5b-8ff4-ca3900e6d58d",
+            "text": {
+              "ops": [
+                {
+                  "insert": "☁️ Cloud Sync Testing",
+                  "attributes": {
+                    "bold": true
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "7a0e0573-ec31-4361-86e3-0882005a4529",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Is the cloud integration stable and syncing in real-time?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "f1be0804-6991-45bf-b4e0-8cdaed80b184",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are documents accessible from both the assistant and the cloud?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "2c8546a0-bca7-411a-9984-042ee2528c68",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Is version control handled correctly?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "medium"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "e1593004-4d0c-4220-a4c2-7f145fface3e",
+            "text": {
+              "ops": [
+                {
+                  "insert": "🔔 Notifications Testing",
+                  "attributes": {
+                    "bold": true
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "6885ba48-78f1-4f62-bb28-a1c72f489e4b",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are important updates being flagged and sent to the user?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "548d8abc-6e58-4de4-b248-ddb2290c85c6",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are summaries or reminders being delivered at the right time?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "medium"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "2d5f3d3f-8b90-45f9-ab00-1733842acb06",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Can the user customize notification preferences?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "low"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "825ccb58-2a73-4fe2-b5b2-603a4c84edd1",
+            "text": {
+              "ops": [
+                {
+                  "insert": "📊 User Interface Testing",
+                  "attributes": {
+                    "bold": true
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "081513bb-f31c-40a3-b9b9-4cf1b0b5c617",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Is the dashboard intuitive and responsive?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "f5c9e1d2-e873-4450-b8e4-159e6bb10d2e",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Can the user search, filter, and view documents easily?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "9d91d185-49b7-4553-9e4f-bd2ba0278769",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Is manual upload available and working?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "medium"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "cdc17cb6-982f-46d1-852b-595b530e4bbd",
+            "text": {
+              "ops": [
+                {
+                  "insert": "🧪 General Testing",
+                  "attributes": {
+                    "bold": true
+                  }
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "h1",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "children": [
+              {
+                "type": "text",
+                "id": "a85a4ab8-e434-4b15-b465-8523d6bc3eff",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "What happens when a corrupted or unsupported file is uploaded?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "medium"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "12de7a55-a562-44ef-bf20-c50caba2ab5b",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "How does the system handle large volumes of documents?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "text",
+                "id": "463a988d-11b7-46a1-820e-2f1e3eb1cc27",
+                "text": {
+                  "ops": [
+                    {
+                      "insert": "Are there any delays or bottlenecks in processing?",
+                      "attributes": {}
+                    },
+                    {
+                      "insert": "\n",
+                      "attributes": {
+                        "paragraph": true
+                      }
+                    }
+                  ]
+                },
+                "format": {
+                  "node": "checkbox",
+                  "children": null
+                },
+                "collapsed": false,
+                "completed": false,
+                "attributes": {
+                  "@urg1": {
+                    "type": "Select",
+                    "optionId": "high"
+                  },
+                  "@dept1": {
+                    "type": "Select",
+                    "optionId": "it"
+                  },
+                  "@type1": {
+                    "type": "Select",
+                    "optionId": "written"
+                  }
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "views": {
+      "table": {
+        "id": "table",
+        "type": "table",
+        "rank": "V",
+        "columns": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7",
+            "width": 480
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A",
+            "hidden": true
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V",
+            "hidden": true
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c",
+            "hidden": true
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k",
+            "hidden": true
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s",
+            "hidden": true
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t",
+            "hidden": true
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u",
+            "hidden": true
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF",
+            "hidden": true
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF",
+            "hidden": true
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x",
+            "hidden": true
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y",
+            "hidden": true
+          },
+          "/attributes/@comp1": {
+            "id": "/attributes/@comp1",
+            "fieldPath": "/attributes/@comp1",
+            "rank": "z",
+            "hidden": false
+          },
+          "/attributes/@type1": {
+            "id": "/attributes/@type1",
+            "fieldPath": "/attributes/@type1",
+            "rank": "zV",
+            "hidden": false
+          },
+          "/attributes/@note1": {
+            "id": "/attributes/@note1",
+            "fieldPath": "/attributes/@note1",
+            "rank": "zk",
+            "hidden": false
+          },
+          "/attributes/@send1": {
+            "id": "/attributes/@send1",
+            "fieldPath": "/attributes/@send1",
+            "rank": "zs",
+            "hidden": false
+          },
+          "/attributes/@recv1": {
+            "id": "/attributes/@recv1",
+            "fieldPath": "/attributes/@recv1",
+            "rank": "zw",
+            "hidden": false
+          },
+          "/attributes/@dept1": {
+            "id": "/attributes/@dept1",
+            "fieldPath": "/attributes/@dept1",
+            "rank": "zy",
+            "hidden": false
+          },
+          "/attributes/@urg1": {
+            "id": "/attributes/@urg1",
+            "fieldPath": "/attributes/@urg1",
+            "rank": "zz",
+            "hidden": false
+          },
+          "/attributes/@date1": {
+            "id": "/attributes/@date1",
+            "fieldPath": "/attributes/@date1",
+            "rank": "zzV",
+            "hidden": false
+          },
+          "/attributes/@summ1": {
+            "id": "/attributes/@summ1",
+            "fieldPath": "/attributes/@summ1",
+            "rank": "zzk",
+            "hidden": false
+          },
+          "/attributes/@rec1": {
+            "id": "/attributes/@rec1",
+            "fieldPath": "/attributes/@rec1",
+            "rank": "zzs",
+            "width": 365,
+            "hidden": false
+          },
+          "/attributes/@cont1": {
+            "id": "/attributes/@cont1",
+            "fieldPath": "/attributes/@cont1",
+            "rank": "zzw",
+            "hidden": false
+          }
+        }
+      }
+    },
+    "fields": {
+      "@rec1": {
+        "type": "string",
+        "displayName": "Recommendation"
+      },
+      "@comp1": {
+        "type": "Select",
+        "displayName": "Company",
+        "options": {
+          "comp-1": {
+            "id": "comp-1",
+            "name": "TechCorp Inc",
+            "color": "#3B82F6",
+            "rank": "0"
+          },
+          "comp-2": {
+            "id": "comp-2",
+            "name": "Global Solutions",
+            "color": "#10B981",
+            "rank": "1"
+          },
+          "comp-3": {
+            "id": "comp-3",
+            "name": "Innovation Labs",
+            "color": "#8B5CF6",
+            "rank": "2"
+          },
+          "comp-4": {
+            "id": "comp-4",
+            "name": "DataFlow Systems",
+            "color": "#F59E0B",
+            "rank": "3"
+          },
+          "comp-5": {
+            "id": "comp-5",
+            "name": "CloudTech Partners",
+            "color": "#EF4444",
+            "rank": "4"
+          },
+          "comp-6": {
+            "id": "comp-6",
+            "name": "NextGen Ventures",
+            "color": "#06B6D4",
+            "rank": "5"
+          },
+          "comp-7": {
+            "id": "comp-7",
+            "name": "Smart Industries",
+            "color": "#84CC16",
+            "rank": "6"
+          },
+          "comp-8": {
+            "id": "comp-8",
+            "name": "Digital Dynamics",
+            "color": "#F97316",
+            "rank": "7"
+          },
+          "comp-9": {
+            "id": "comp-9",
+            "name": "Future Systems",
+            "color": "#EC4899",
+            "rank": "8"
+          },
+          "comp-10": {
+            "id": "comp-10",
+            "name": "Alpha Enterprises",
+            "color": "#6366F1",
+            "rank": "9"
+          }
+        }
+      },
+      "@date1": {
+        "type": "DateTime",
+        "title": "Date & Time"
+      },
+      "@urg1": {
+        "type": "Select",
+        "displayName": "Urgency",
+        "options": {
+          "low": {
+            "id": "low",
+            "name": "🟢 Low",
+            "color": "#10B981",
+            "rank": "0"
+          },
+          "medium": {
+            "id": "medium",
+            "name": "🟡 Medium",
+            "color": "#F59E0B",
+            "rank": "1"
+          },
+          "high": {
+            "id": "high",
+            "name": "🔴 High",
+            "color": "#EF4444",
+            "rank": "2"
+          }
+        }
+      },
+      "@send1": {
+        "type": "string",
+        "displayName": "Sender"
+      },
+      "@recv1": {
+        "type": "string",
+        "displayName": "Recipient"
+      },
+      "@dept1": {
+        "type": "Select",
+        "displayName": "Department",
+        "options": {
+          "finance": {
+            "id": "finance",
+            "name": "Finance",
+            "color": "#10B981",
+            "rank": "0"
+          },
+          "marketing": {
+            "id": "marketing",
+            "name": "Marketing",
+            "color": "#F59E0B",
+            "rank": "1"
+          },
+          "operations": {
+            "id": "operations",
+            "name": "Operations",
+            "color": "#3B82F6",
+            "rank": "2"
+          },
+          "hr": {
+            "id": "hr",
+            "name": "Human Resources",
+            "color": "#8B5CF6",
+            "rank": "3"
+          },
+          "it": {
+            "id": "it",
+            "name": "IT",
+            "color": "#06B6D4",
+            "rank": "4"
+          },
+          "sales": {
+            "id": "sales",
+            "name": "Sales",
+            "color": "#EF4444",
+            "rank": "5"
+          },
+          "legal": {
+            "id": "legal",
+            "name": "Legal",
+            "color": "#6B7280",
+            "rank": "6"
+          },
+          "executive": {
+            "id": "executive",
+            "name": "Executive",
+            "color": "#EC4899",
+            "rank": "7"
+          }
+        }
+      },
+      "@summ1": {
+        "type": "string",
+        "displayName": "Summary"
+      },
+      "@type1": {
+        "type": "Select",
+        "displayName": "Item Type",
+        "options": {
+          "email": {
+            "id": "email",
+            "name": "Email",
+            "color": "#3B82F6",
+            "rank": "0"
+          },
+          "voice": {
+            "id": "voice",
+            "name": "Voice Note",
+            "color": "#10B981",
+            "rank": "1"
+          },
+          "written": {
+            "id": "written",
+            "name": "Written Note",
+            "color": "#8B5CF6",
+            "rank": "2"
+          }
+        }
+      },
+      "@note1": {
+        "type": "string",
+        "displayName": "Personal Note"
+      },
+      "@cont1": {
+        "type": "string",
+        "displayName": "Content"
+      }
+    }
+  },
+  "preferences": {
+    "defaultView": "table",
+    "avatar": {
+      "type": "emoji",
+      "value": "📧"
+    }
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "text": {
+          "ops": [
+            {
+              "insert": "DocuFlow AI - Document Management System"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "f1eebef8-910c-4f47-9e95-556e47c3b093",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Microsoft Teams Integration Project",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@title1": "Microsoft Teams Integration Project",
+              "@type1": {
+                "type": "Select",
+                "optionId": "email"
+              },
+              "@sender1": "sarah.chen@microsoft.com",
+              "@category1": {
+                "type": "Select",
+                "optionId": "it"
+              },
+              "@urgency1": {
+                "type": "Select",
+                "optionId": "high"
+              },
+              "@summary1": "Microsoft is proposing a Teams integration project with our existing systems. Timeline is aggressive with Q1 deadline. Requires IT architecture review and security compliance assessment.",
+              "@status1": {
+                "type": "Select",
+                "optionId": "processed"
+              },
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-16"
+                }
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "3f261243-6fad-4771-b3b1-6d68d8ac381e",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Goldman Sachs Investment Opportunity",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@title1": "Goldman Sachs Investment Opportunity",
+              "@type1": {
+                "type": "Select",
+                "optionId": "email"
+              },
+              "@sender1": "james.rodriguez@gs.com",
+              "@category1": {
+                "type": "Select",
+                "optionId": "finance"
+              },
+              "@urgency1": {
+                "type": "Select",
+                "optionId": "medium"
+              },
+              "@summary1": "Goldman Sachs presenting investment opportunity for portfolio diversification. Minimum investment $5M with projected 12-15% returns. Requires board approval and due diligence review.",
+              "@status1": {
+                "type": "Select",
+                "optionId": "processed"
+              },
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-15"
+                }
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "31eddeb8-2fe6-4b49-b8ec-cbd36db80dc7",
+            "text": {
+              "ops": [
+                {
+                  "insert": "AWS Security Audit Report",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@title1": "AWS Security Audit Report",
+              "@type1": {
+                "type": "Select",
+                "optionId": "document"
+              },
+              "@sender1": "AWS Security Team",
+              "@category1": {
+                "type": "Select",
+                "optionId": "security"
+              },
+              "@urgency1": {
+                "type": "Select",
+                "optionId": "high"
+              },
+              "@summary1": "Critical vulnerabilities identified in cloud infrastructure. Immediate remediation required for SOC 2 compliance. Multi-factor authentication and encryption protocols need updates.",
+              "@status1": {
+                "type": "Select",
+                "optionId": "processed"
+              },
+              "@date1": {
+                "type": "DateTime",
+                "dateTime": {
+                  "date": "2025-01-13"
+                }
+              }
+            },
+            "children": []
+          }
+        ]
+      }
+    ],
+    "views": {
+      "table": {
+        "id": "table",
+        "type": "table",
+        "rank": "V",
+        "columns": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7",
+            "width": 480
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A",
+            "hidden": true
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V",
+            "hidden": true
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c",
+            "hidden": true
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k",
+            "hidden": true
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s",
+            "hidden": true
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t",
+            "hidden": true
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u",
+            "hidden": true
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF",
+            "hidden": true
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF",
+            "hidden": true
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x",
+            "hidden": true
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y",
+            "hidden": true
+          },
+          "/attributes/@title1": {
+            "id": "/attributes/@title1",
+            "fieldPath": "/attributes/@title1",
+            "rank": "z",
+            "hidden": false
+          },
+          "/attributes/@type1": {
+            "id": "/attributes/@type1",
+            "fieldPath": "/attributes/@type1",
+            "rank": "zV",
+            "hidden": false
+          },
+          "/attributes/@sender1": {
+            "id": "/attributes/@sender1",
+            "fieldPath": "/attributes/@sender1",
+            "rank": "zk",
+            "hidden": false
+          },
+          "/attributes/@category1": {
+            "id": "/attributes/@category1",
+            "fieldPath": "/attributes/@category1",
+            "rank": "zs",
+            "hidden": false
+          },
+          "/attributes/@urgency1": {
+            "id": "/attributes/@urgency1",
+            "fieldPath": "/attributes/@urgency1",
+            "rank": "zw",
+            "hidden": false
+          },
+          "/attributes/@summary1": {
+            "id": "/attributes/@summary1",
+            "fieldPath": "/attributes/@summary1",
+            "rank": "zy",
+            "hidden": false
+          },
+          "/attributes/@status1": {
+            "id": "/attributes/@status1",
+            "fieldPath": "/attributes/@status1",
+            "rank": "zz",
+            "hidden": false
+          },
+          "/attributes/@date1": {
+            "id": "/attributes/@date1",
+            "fieldPath": "/attributes/@date1",
+            "rank": "zzV",
+            "hidden": false
+          }
+        }
+      }
+    },
+    "fields": {
+      "@title1": {
+        "type": "string",
+        "displayName": "Document Title"
+      },
+      "@type1": {
+        "type": "Select",
+        "displayName": "Document Type",
+        "options": {
+          "email": {
+            "id": "email",
+            "name": "Email",
+            "color": "#3B82F6",
+            "rank": "0"
+          },
+          "document": {
+            "id": "document",
+            "name": "Document",
+            "color": "#10B981",
+            "rank": "1"
+          },
+          "voice": {
+            "id": "voice",
+            "name": "Voice Note",
+            "color": "#8B5CF6",
+            "rank": "2"
+          },
+          "image": {
+            "id": "image",
+            "name": "Image",
+            "color": "#F59E0B",
+            "rank": "3"
+          }
+        }
+      },
+      "@sender1": {
+        "type": "string",
+        "displayName": "Sender"
+      },
+      "@category1": {
+        "type": "Select",
+        "displayName": "Category",
+        "options": {
+          "it": {
+            "id": "it",
+            "name": "IT",
+            "color": "#3B82F6",
+            "rank": "0"
+          },
+          "finance": {
+            "id": "finance",
+            "name": "Finance",
+            "color": "#10B981",
+            "rank": "1"
+          },
+          "security": {
+            "id": "security",
+            "name": "Security",
+            "color": "#EF4444",
+            "rank": "2"
+          },
+          "marketing": {
+            "id": "marketing",
+            "name": "Marketing",
+            "color": "#F59E0B",
+            "rank": "3"
+          },
+          "operations": {
+            "id": "operations",
+            "name": "Operations",
+            "color": "#8B5CF6",
+            "rank": "4"
+          }
+        }
+      },
+      "@urgency1": {
+        "type": "Select",
+        "displayName": "Urgency",
+        "options": {
+          "low": {
+            "id": "low",
+            "name": "🟢 Low",
+            "color": "#10B981",
+            "rank": "0"
+          },
+          "medium": {
+            "id": "medium",
+            "name": "🟡 Medium",
+            "color": "#F59E0B",
+            "rank": "1"
+          },
+          "high": {
+            "id": "high",
+            "name": "🔴 High",
+            "color": "#EF4444",
+            "rank": "2"
+          }
+        }
+      },
+      "@summary1": {
+        "type": "string",
+        "displayName": "AI Summary"
+      },
+      "@status1": {
+        "type": "Select",
+        "displayName": "Processing Status",
+        "options": {
+          "pending": {
+            "id": "pending",
+            "name": "Pending",
+            "color": "#F59E0B",
+            "rank": "0"
+          },
+          "processing": {
+            "id": "processing",
+            "name": "Processing",
+            "color": "#3B82F6",
+            "rank": "1"
+          },
+          "processed": {
+            "id": "processed",
+            "name": "Processed",
+            "color": "#10B981",
+            "rank": "2"
+          },
+          "error": {
+            "id": "error",
+            "name": "Error",
+            "color": "#EF4444",
+            "rank": "3"
+          }
+        }
+      },
+      "@date1": {
+        "type": "DateTime",
+        "title": "Date Received"
+      }
+    }
+  },
+  "preferences": {
+    "defaultView": "table"
+  }
+}

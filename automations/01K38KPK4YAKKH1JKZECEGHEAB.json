@@ -1,0 +1,198 @@
+{
+  "version": "2",
+  "flowTitle": "Email Auto-Processor",
+  "trigger": {
+    "valid": true,
+    "displayName": "Email Received",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-taskade",
+      "pieceVersion": "1.0.0",
+      "triggerName": "mailhook",
+      "input": {}
+    }
+  },
+  "actions": [
+    {
+      "name": "company-detector",
+      "valid": true,
+      "displayName": "Detect Company from Email",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "1.0.0",
+        "actionName": "ai.generate",
+        "input": {
+          "input": "From: {{ trigger[\"from\"] }}\nTo: {{ trigger[\"to\"] }}\nSubject: {{ trigger[\"subject\"] }}\nBody: {{ trigger[\"body\"] }}",
+          "prompt": "Analyze this email and extract the company name. Look for:\n1. Email domain (e.g., @company.com)\n2. Email signature company names\n3. Company names mentioned in content\n4. Letterheads or headers\n\nReturn ONLY the company name, nothing else. If multiple companies are mentioned, return the sender's company. If no clear company is found, return 'Unknown Company'."
+        }
+      }
+    },
+    {
+      "name": "department-detector",
+      "valid": true,
+      "displayName": "Detect Department",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "1.0.0",
+        "actionName": "ai.generate",
+        "input": {
+          "input": "{{ trigger[\"subject\"] }} {{ trigger[\"body\"] }}",
+          "prompt": "Analyze this email and determine the department. Use these keywords and context clues:\n\nFINANCE: budget, financial, accounting, revenue, profit, cost, expense, invoice, payment, audit, CFO, controller, bookkeeping, tax, fiscal\nMARKETING: campaign, brand, advertising, promotion, social media, content, SEO, leads, conversion, CMO, marketing manager, PR, publicity\nOPERATIONS: process, workflow, efficiency, logistics, supply chain, production, quality, COO, operations manager, manufacturing, delivery\nHR: employee, hiring, recruitment, benefits, payroll, training, performance, HRIS, HR manager, onboarding, termination, policy\nIT: system, software, hardware, network, security, database, server, CTO, IT manager, technical, programming, infrastructure\nSALES: deal, prospect, client, customer, quota, pipeline, CRM, sales manager, commission, contract, negotiation, closing\nLEGAL: contract, compliance, regulation, legal counsel, attorney, lawsuit, intellectual property, terms, agreement, liability\nEXECUTIVE: strategy, vision, board, CEO, president, executive decision, leadership, governance, merger, acquisition\n\nReturn ONLY one of these: finance, marketing, operations, hr, it, sales, legal, executive"
+        }
+      }
+    },
+    {
+      "name": "urgency-detector",
+      "valid": true,
+      "displayName": "Detect Urgency",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "1.0.0",
+        "actionName": "ai.generate",
+        "input": {
+          "input": "{{ trigger[\"subject\"] }} {{ trigger[\"body\"] }}",
+          "prompt": "Analyze this email and determine urgency level based on:\n\nHIGH URGENCY indicators: urgent, ASAP, immediate, emergency, critical, deadline today, time-sensitive, escalation, crisis, breaking\nMEDIUM URGENCY indicators: soon, this week, important, priority, follow up, needs attention, review required, action needed\nLOW URGENCY indicators: FYI, informational, when convenient, no rush, update, routine, standard, regular\n\nReturn ONLY one of these: high, medium, low"
+        }
+      }
+    },
+    {
+      "name": "summary-generator",
+      "valid": true,
+      "displayName": "Generate Summary",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "1.0.0",
+        "actionName": "ai.generate",
+        "input": {
+          "input": "{{ trigger[\"subject\"] }} {{ trigger[\"body\"] }}",
+          "prompt": "Create a concise 2-4 line executive summary of this email. Focus on:\n- Key decisions or actions required\n- Important deadlines or timelines\n- Financial or strategic implications\n- Main stakeholders involved\n\nKeep it professional and actionable."
+        }
+      }
+    },
+    {
+      "name": "recommendation-generator",
+      "valid": true,
+      "displayName": "Generate Recommendation",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "1.0.0",
+        "actionName": "ai.generate",
+        "input": {
+          "input": "{{ trigger[\"subject\"] }} {{ trigger[\"body\"] }}",
+          "prompt": "Based on this email, provide a strategic recommendation or next steps. Consider:\n- Immediate actions required\n- Stakeholders to involve\n- Potential risks or opportunities\n- Timeline for response\n\nProvide specific, actionable advice in 2-3 sentences."
+        }
+      }
+    },
+    {
+      "name": "create-inbox-item",
+      "valid": false,
+      "displayName": "Create Inbox Item",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "1.0.0",
+        "actionName": "task.create",
+        "input": {
+          "fields": {
+            "@rec1": {
+              "data": {
+                "value": "{{ recommendation-generator[\"result\"] }}"
+              },
+              "rank": "9",
+              "fieldId": "@rec1"
+            },
+            "@urg1": {
+              "data": {
+                "value": "{{ urgency-detector[\"result\"] }}"
+              },
+              "rank": "6",
+              "fieldId": "@urg1"
+            },
+            "@comp1": {
+              "data": {
+                "value": "{{ company-detector[\"result\"] }}"
+              },
+              "rank": "0",
+              "fieldId": "@comp1"
+            },
+            "@cont1": {
+              "data": {
+                "value": "Subject: {{ trigger[\"subject\"] }}\nFrom: {{ trigger[\"from\"] }}\nTo: {{ trigger[\"to\"] }}\nDate: {{ trigger[\"sendDate\"] }}\n\n{{ trigger[\"body\"] }}"
+              },
+              "rank": "10",
+              "fieldId": "@cont1"
+            },
+            "@date1": {
+              "data": {
+                "value": "{{ trigger[\"sendDate\"] }}"
+              },
+              "rank": "7",
+              "fieldId": "@date1"
+            },
+            "@dept1": {
+              "data": {
+                "value": "{{ department-detector[\"result\"] }}"
+              },
+              "rank": "5",
+              "fieldId": "@dept1"
+            },
+            "@note1": {
+              "data": {
+                "value": "Auto-processed from {{ trigger[\"from\"] }}"
+              },
+              "rank": "2",
+              "fieldId": "@note1"
+            },
+            "@recv1": {
+              "data": {
+                "value": "{{ trigger[\"to\"] }}"
+              },
+              "rank": "4",
+              "fieldId": "@recv1"
+            },
+            "@send1": {
+              "data": {
+                "value": "{{ trigger[\"from\"] }}"
+              },
+              "rank": "3",
+              "fieldId": "@send1"
+            },
+            "@summ1": {
+              "data": {
+                "value": "{{ summary-generator[\"result\"] }}"
+              },
+              "rank": "8",
+              "fieldId": "@summ1"
+            },
+            "@type1": {
+              "data": {
+                "value": "email"
+              },
+              "rank": "1",
+              "fieldId": "@type1"
+            }
+          },
+          "content": "📧 {{ trigger[\"subject\"] }}",
+          "position": "afterbegin",
+          "projectId": {
+            "type": "flow-template-variable-input-type",
+            "id": "J2FLBt8mpBfcVmVp"
+          }
+        }
+      }
+    }
+  ],
+  "variables": {
+    "J2FLBt8mpBfcVmVp": {
+      "id": "J2FLBt8mpBfcVmVp",
+      "rank": "V",
+      "type": "string",
+      "format": "taskade-project-id"
+    }
+  }
+}

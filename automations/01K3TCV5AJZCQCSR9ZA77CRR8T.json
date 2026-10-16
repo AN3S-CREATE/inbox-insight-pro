@@ -1,0 +1,61 @@
+{
+  "version": "2",
+  "flowTitle": "DocuFlow AI - Query Handler",
+  "trigger": {
+    "valid": true,
+    "type": "WEBHOOK",
+    "settings": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Input for query"
+          },
+          "context": {
+            "type": "string",
+            "description": "Input for context"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "actions": [
+    {
+      "name": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+      "valid": true,
+      "displayName": "AI Query Response",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "1.0.0",
+        "actionName": "ai.ask",
+        "input": {
+          "input": "User Query: {{ trigger[\"body\"][\"query\"] }}\nContext: {{ trigger[\"body\"][\"context\"] }}",
+          "prompt": "You are DocuFlow AI, an intelligent document management assistant. Answer the user's query about their documents in a helpful and accurate way."
+        }
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "type": "http_response",
+      "body": {
+        "type": "json",
+        "data": {
+          "type": "basic",
+          "payload": [
+            {
+              "query": "{{ trigger[\"body\"][\"query\"] }}"
+            },
+            {
+              "response": "{{ f47ac10b-58cc-4372-a567-0e02b2c3d483[\"result\"] }}"
+            }
+          ]
+        }
+      },
+      "key": "trigger"
+    }
+  ]
+}

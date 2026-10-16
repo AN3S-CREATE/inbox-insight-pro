@@ -1,0 +1,13 @@
+{
+  "version": "2",
+  "flowTitle": "Executive Inbox Items AI Form",
+  "trigger": {
+    "type": "FORM",
+    "displayName": "AI Form",
+    "settings": {
+      "inputs": [],
+      "isEndPageEnabled": false
+    }
+  },
+  "actions": []
+}
