@@ -4,8 +4,7 @@ import { X, Save, User, Palette, MessageSquare, Volume2, Eye, Sparkles, Brain, B
 interface PersonalizationSettings {
   name: string;
   avatar: string;
-  customAvatar?: string;
-  theme: 'purple-blue' | 'green-teal' | 'orange-red' | 'pink-purple' | 'dark' | 'minimal';
+  theme: 'green-teal' | 'orange-red' | 'dark' | 'minimal';
   personality: 'professional' | 'friendly' | 'casual' | 'enthusiastic' | 'zen';
   greetingMessage: string;
   responseStyle: 'detailed' | 'concise' | 'bullet-points' | 'conversational';
@@ -33,7 +32,6 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
   if (!isOpen) return null;
 
   const avatarOptions = [
-    { id: 'custom', label: 'Custom Image', icon: User },
     { id: 'brain', label: 'Neural Brain', icon: Brain },
     { id: 'bot', label: 'Robot Assistant', icon: Bot },
     { id: 'sparkles', label: 'Magic Sparkles', icon: Sparkles },
@@ -44,13 +42,12 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
     { id: 'lightbulb', label: 'Idea Generator', icon: Lightbulb }
   ];
 
-  const themeOptions = [
-    {
-      id: 'purple-blue',
-      name: 'Purple Blue',
-      gradient: 'from-purple-600 to-blue-600',
-      description: 'Professional and modern'
-    },
+  const themeOptions: Array<{
+    id: PersonalizationSettings['theme'];
+    name: string;
+    gradient: string;
+    description: string;
+  }> = [
     {
       id: 'green-teal',
       name: 'Green Teal',
@@ -62,12 +59,6 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
       name: 'Orange Red',
       gradient: 'from-orange-500 to-red-500',
       description: 'Energetic and bold'
-    },
-    {
-      id: 'pink-purple',
-      name: 'Pink Purple',
-      gradient: 'from-pink-500 to-purple-500',
-      description: 'Creative and vibrant'
     },
     {
       id: 'dark',
@@ -83,7 +74,11 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
     }
   ];
 
-  const personalityOptions = [
+  const personalityOptions: Array<{
+    id: PersonalizationSettings['personality'];
+    name: string;
+    description: string;
+  }> = [
     {
       id: 'professional',
       name: 'Professional',
@@ -125,7 +120,7 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
 
   const getThemeClasses = (themeId: string) => {
     const theme = themeOptions.find(t => t.id === themeId);
-    return theme ? `bg-gradient-to-r ${theme.gradient}` : 'bg-gradient-to-r from-purple-600 to-blue-600';
+    return theme ? `bg-gradient-to-r ${theme.gradient}` : 'bg-gradient-to-r from-green-500 to-teal-500';
   };
 
   return (
@@ -161,21 +156,11 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                   type="text"
                   value={localSettings.name}
                   onChange={(e) => updateSetting('name', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   placeholder="AI Knowledge Assistant"
                 />
               </div>
               
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Custom Avatar URL</label>
-                <input
-                  type="url"
-                  value={localSettings.customAvatar || ''}
-                  onChange={(e) => updateSetting('customAvatar', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="https://example.com/avatar.png"
-                />
-              </div>
             </div>
 
             <div className="mt-4">
@@ -184,7 +169,7 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                 value={localSettings.greetingMessage}
                 onChange={(e) => updateSetting('greetingMessage', e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
                 placeholder="Hi! I'm your AI Knowledge Assistant..."
               />
             </div>
@@ -205,25 +190,14 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                     onClick={() => updateSetting('avatar', avatar.id)}
                     className={`p-4 rounded-lg border-2 transition-all ${
                       isSelected
-                        ? 'border-purple-500 bg-purple-50'
+                        ? 'border-green-500 bg-green-50'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 ${
                       isSelected ? getThemeClasses(localSettings.theme) : 'bg-gray-100'
                     }`}>
-                      {avatar.id === 'custom' && localSettings.customAvatar ? (
-                        <img
-                          src={localSettings.customAvatar}
-                          alt="Custom"
-                          className="w-8 h-8 rounded-full object-cover"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                      ) : (
-                        <Icon className={`w-6 h-6 ${isSelected ? 'text-white' : 'text-gray-600'}`} />
-                      )}
+                      <Icon className={`w-6 h-6 ${isSelected ? 'text-white' : 'text-gray-600'}`} />
                     </div>
                     <p className="text-xs text-gray-700 text-center">{avatar.label}</p>
                   </button>
@@ -240,10 +214,10 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
               {themeOptions.map((theme) => (
                 <button
                   key={theme.id}
-                  onClick={() => updateSetting('theme', theme.id as any)}
+                  onClick={() => updateSetting('theme', theme.id)}
                   className={`p-4 rounded-lg border-2 transition-all ${
                     localSettings.theme === theme.id
-                      ? 'border-purple-500 bg-purple-50'
+                      ? 'border-green-500 bg-green-50'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
@@ -265,7 +239,7 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                   key={personality.id}
                   className={`flex items-start space-x-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
                     localSettings.personality === personality.id
-                      ? 'border-purple-500 bg-purple-50'
+                      ? 'border-green-500 bg-green-50'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
@@ -274,7 +248,7 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                     name="personality"
                     value={personality.id}
                     checked={localSettings.personality === personality.id}
-                    onChange={(e) => updateSetting('personality', e.target.value as any)}
+                    onChange={() => updateSetting('personality', personality.id)}
                     className="mt-1"
                   />
                   <div className="flex-1">
@@ -291,17 +265,17 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Position</h3>
               <div className="space-y-2">
-                {[
+                {([
                   { id: 'bottom-right', name: 'Bottom Right' },
                   { id: 'bottom-left', name: 'Bottom Left' },
                   { id: 'top-right', name: 'Top Right' },
                   { id: 'top-left', name: 'Top Left' }
-                ].map((position) => (
+                ] as const).map((position) => (
                   <label
                     key={position.id}
                     className={`flex items-center space-x-3 p-3 rounded-lg border cursor-pointer transition-all ${
                       localSettings.position === position.id
-                        ? 'border-purple-500 bg-purple-50'
+                        ? 'border-green-500 bg-green-50'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
@@ -310,7 +284,7 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                       name="position"
                       value={position.id}
                       checked={localSettings.position === position.id}
-                      onChange={(e) => updateSetting('position', e.target.value as any)}
+                      onChange={() => updateSetting('position', position.id)}
                     />
                     <span className="font-medium text-gray-900">{position.name}</span>
                   </label>
@@ -321,16 +295,16 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Button Size</h3>
               <div className="space-y-2">
-                {[
+                {([
                   { id: 'small', name: 'Small', size: 'w-12 h-12' },
                   { id: 'medium', name: 'Medium', size: 'w-14 h-14' },
                   { id: 'large', name: 'Large', size: 'w-16 h-16' }
-                ].map((size) => (
+                ] as const).map((size) => (
                   <label
                     key={size.id}
                     className={`flex items-center space-x-3 p-3 rounded-lg border cursor-pointer transition-all ${
                       localSettings.size === size.id
-                        ? 'border-purple-500 bg-purple-50'
+                        ? 'border-green-500 bg-green-50'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
@@ -339,7 +313,7 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                       name="size"
                       value={size.id}
                       checked={localSettings.size === size.id}
-                      onChange={(e) => updateSetting('size', e.target.value as any)}
+                      onChange={() => updateSetting('size', size.id)}
                     />
                     <div className={`${size.size} bg-gray-200 rounded-full flex items-center justify-center mr-2`}>
                       <User className="w-4 h-4 text-gray-600" />
@@ -401,30 +375,15 @@ export const AIPersonalizationModal: React.FC<AIPersonalizationModalProps> = ({
                   localSettings.size === 'medium' ? 'w-14 h-14' :
                   'w-16 h-16'
                 } ${getThemeClasses(localSettings.theme)} rounded-full shadow-lg flex items-center justify-center`}>
-                  {localSettings.avatar === 'custom' && localSettings.customAvatar ? (
-                    <img
-                      src={localSettings.customAvatar}
-                      alt="AI Assistant"
-                      className={`${
-                        localSettings.size === 'small' ? 'w-8 h-8' :
-                        localSettings.size === 'medium' ? 'w-10 h-10' :
-                        'w-12 h-12'
-                      } rounded-full object-cover border border-white`}
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                  ) : (
-                    (() => {
-                      const selectedAvatar = avatarOptions.find(a => a.id === localSettings.avatar);
-                      const Icon = selectedAvatar?.icon || Brain;
-                      return <Icon className={`${
-                        localSettings.size === 'small' ? 'w-6 h-6' :
-                        localSettings.size === 'medium' ? 'w-7 h-7' :
-                        'w-8 h-8'
-                      } text-white`} />;
-                    })()
-                  )}
+                  {(() => {
+                    const selectedAvatar = avatarOptions.find(a => a.id === localSettings.avatar);
+                    const Icon = selectedAvatar?.icon || Brain;
+                    return <Icon className={`${
+                      localSettings.size === 'small' ? 'w-6 h-6' :
+                      localSettings.size === 'medium' ? 'w-7 h-7' :
+                      'w-8 h-8'
+                    } text-white`} />;
+                  })()}
                 </div>
               </div>
               <div className="text-center text-gray-500 text-sm">

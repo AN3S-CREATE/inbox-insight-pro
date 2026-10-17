@@ -268,7 +268,7 @@ const TestResults: React.FC<TestResultsProps> = ({ results, onGenerateReport }) 
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         .glow-text {
           text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
         }

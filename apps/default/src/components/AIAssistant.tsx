@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, Brain, Loader2, Sparkles, Mic, MicOff, Settings, Bot, Zap, Heart, Star, Coffee, Lightbulb } from 'lucide-react';
 import { InboxItem } from '../types/inbox';
 import { AIPersonalizationModal } from './AIPersonalizationModal';
+import { askInboxAssistant } from '../services/api';
 
 interface AIAssistantProps {
   items: InboxItem[];
@@ -19,8 +20,7 @@ interface ChatMessage {
 interface PersonalizationSettings {
   name: string;
   avatar: string;
-  customAvatar?: string;
-  theme: 'purple-blue' | 'green-teal' | 'orange-red' | 'pink-purple' | 'dark' | 'minimal';
+  theme: 'green-teal' | 'orange-red' | 'dark' | 'minimal';
   personality: 'professional' | 'friendly' | 'casual' | 'enthusiastic' | 'zen';
   greetingMessage: string;
   responseStyle: 'detailed' | 'concise' | 'bullet-points' | 'conversational';
@@ -41,9 +41,8 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
   // Default personalization settings
   const [settings, setSettings] = useState<PersonalizationSettings>({
     name: 'AI Knowledge Assistant',
-    avatar: 'custom',
-    customAvatar: 'https://iili.io/KFoQcCb.png',
-    theme: 'purple-blue',
+    avatar: 'brain',
+    theme: 'green-teal',
     personality: 'friendly',
     greetingMessage: "👋 Hi! I'm your AI Knowledge Assistant. I have access to your complete knowledge base and can help you find information instantly.\n\n**Try asking me:**\n• \"What did I say about Microsoft last week?\"\n• \"Show me urgent finance items\"\n• \"Find all marketing meetings from this month\"\n• \"What notes do I have about TechCorp?\"\n• \"Show me voice notes from yesterday\"\n\nI can search by company, department, urgency, date ranges, and content. What would you like to know?",
     responseStyle: 'conversational',
@@ -97,14 +96,12 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
         return 'from-green-500 to-teal-500';
       case 'orange-red':
         return 'from-orange-500 to-red-500';
-      case 'pink-purple':
-        return 'from-pink-500 to-purple-500';
       case 'dark':
         return 'from-gray-800 to-gray-900';
       case 'minimal':
         return 'from-gray-100 to-gray-200';
       default:
-        return 'from-purple-600 to-blue-600';
+        return 'from-green-500 to-teal-500';
     }
   };
 
@@ -356,7 +353,7 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
       if (settings.responseStyle === 'bullet-points') {
         response += `• **${item.title}** (${date})\n`;
         response += `  📅 ${item.companyLabel} • ${item.departmentLabel} • ${item.urgencyLabel}\n`;
-        if (settings.responseStyle === 'detailed' && item.summary) {
+        if (item.summary) {
           response += `  💡 ${item.summary}\n`;
         }
       } else {
@@ -400,23 +397,31 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate AI processing delay for realism
-    setTimeout(() => {
-      const searchResult = searchItems(currentQuery);
-      const response = generateResponse(currentQuery, searchResult);
-
+    const searchResult = searchItems(currentQuery);
+    try {
+      const contextItems = searchResult.items.length > 0 ? searchResult.items : items.slice(0, 20);
+      const response = await askInboxAssistant(currentQuery, contextItems);
       const assistantMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         type: 'assistant',
         content: response,
         timestamp: new Date(),
         relatedItems: searchResult.items,
-        queryType: searchResult.queryInfo.type as any,
+        queryType: searchResult.queryInfo.type as ChatMessage['queryType']
       };
-
       setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      setMessages(prev => [...prev, {
+        id: (Date.now() + 1).toString(),
+        type: 'assistant',
+        content: error instanceof Error ? error.message : 'The local AI request failed.',
+        timestamp: new Date(),
+        relatedItems: searchResult.items,
+        queryType: 'general'
+      }]);
+    } finally {
       setIsLoading(false);
-    }, 1200);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -461,23 +466,8 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
   };
 
   const renderAvatar = (size: string = 'w-8 h-8') => {
-    if (settings.avatar === 'custom' && settings.customAvatar) {
-      return (
-        <img 
-          src={settings.customAvatar} 
-          alt="AI Assistant" 
-          className={`${size} rounded-full border border-white object-cover`}
-          onError={(e) => {
-            e.currentTarget.style.display = 'none';
-            const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
-            if (nextElement) nextElement.classList.remove('hidden');
-          }}
-        />
-      );
-    } else {
-      const Icon = getAvatarIcon();
-      return <Icon className={`${size.replace('w-', '').replace('h-', '').replace(' ', '')} text-white`} />;
-    }
+    const Icon = getAvatarIcon();
+    return <Icon className={`${size} text-white`} />;
   };
 
   return (
@@ -504,21 +494,7 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
               <Brain className="w-5 h-5 hidden" />
               <div className="text-center">
                 <h3 className="font-semibold">{settings.name}</h3>
-                <div className="text-xs opacity-75 mt-1 tracking-wider">POWERED BY</div>
-                <div className="mt-1 flex justify-center">
-                  <img 
-                    src="https://iili.io/F5mGKYl.png" 
-                    alt="Company Logo" 
-                    className="h-5 max-w-20 object-contain"
-                    onError={(e) => {
-                      // If image fails to load, show fallback text
-                      e.currentTarget.style.display = 'none';
-                      const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                      if (fallback) fallback.style.display = 'block';
-                    }}
-                  />
-                  <div className="text-xs font-bold opacity-90 hidden">YOUR COMPANY</div>
-                </div>
+                <div className="mt-1 text-xs font-bold opacity-90">LOCAL OLLAMA MODEL</div>
                 <p className="text-xs opacity-90 mt-1">{items.length} items in knowledge base</p>
               </div>
             </div>
@@ -567,7 +543,7 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
               <div className="flex justify-start">
                 <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
                   <div className="flex items-center space-x-2">
-                    <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
+                    <Loader2 className="w-4 h-4 animate-spin text-green-600" />
                     <span className="text-sm text-gray-600">Searching knowledge base...</span>
                   </div>
                 </div>
@@ -585,7 +561,7 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
                   <button
                     key={index}
                     onClick={() => handleSuggestedQuery(query)}
-                    className={`text-xs bg-gradient-to-r from-purple-50 to-blue-50 hover:from-purple-100 hover:to-blue-100 text-gray-700 px-3 py-2 rounded-lg transition-colors text-left border border-purple-200 ${settings.animationsEnabled ? 'hover:scale-[1.02]' : ''}`}
+                    className={`text-xs bg-gradient-to-r from-green-50 to-teal-50 hover:from-green-100 hover:to-teal-100 text-gray-700 px-3 py-2 rounded-lg transition-colors text-left border border-green-200 ${settings.animationsEnabled ? 'hover:scale-[1.02]' : ''}`}
                   >
                     {query}
                   </button>
@@ -603,7 +579,7 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me about your notes, emails, or meetings..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none text-sm"
                   rows={2}
                 />
               </div>
