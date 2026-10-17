@@ -17,6 +17,8 @@ ollama pull llama3.1
 
 Ollama stays on `http://localhost:11434`. The application binds its API to
 `127.0.0.1` and uses the Vite development server as a local frontend.
+The API rejects requests with non-loopback `Host` headers to reduce DNS
+rebinding exposure.
 
 ## Install and run
 
@@ -74,7 +76,8 @@ your local inbox.
   to refresh its AI fields
 - `DELETE /api/items/:id` — delete an item
 - `POST /api/analyze` — analyze content without saving it
-- `POST /api/query` — answer a question using supplied local inbox records
+- `POST /api/query` — answer a question using a bounded set of supplied local
+  inbox records and explicit metadata when matching results were omitted
 - `GET /api/health` — local API health check
 
 Voice recordings are not uploaded or transcribed automatically. Enter or paste

@@ -1,9 +1,11 @@
 # Repository Analysis State — inbox-insight-pro
 
 ## Current Analysis Phase & Progress
-Phase 2: Local application implementation and verification complete. The
-Express/SQLite/Ollama backend and frontend local API integration are
-implemented, and the production build and SQLite-backed API checks pass.
+Phase 4: PR review follow-up verified. The initial local app is merged to
+`main`; all 11 review findings have code changes on `fix-review-feedback`.
+Typecheck, production build, and mock-Ollama API checks now pass. Next is
+commit/push, create and merge the follow-up PR, resolve the original threads,
+and remove the merged feature branches.
 
 ## Key Architectural Insights Discovered
 - `apps/default/src/types/inbox.ts` defines the inbox item fields and UI labels.
@@ -15,6 +17,9 @@ implemented, and the production build and SQLite-backed API checks pass.
 - The exported workflows were used to recover behavior requirements and then
   removed from the runtime repository.
 - `server/index.ts` provides local REST endpoints and serves the built UI.
+- Assistant requests include at most 20 bounded records and explicit matching,
+  included, and omitted counts; the largest bounded control-character payload
+  measured 1,004,327 bytes, below Express's 1 MiB JSON limit.
 
 ## Files Deeply Reviewed
 - `apps/default/src/types/inbox.ts` (`InboxItem`, `FilterState`.)
@@ -23,10 +28,15 @@ implemented, and the production build and SQLite-backed API checks pass.
 - `server/database.ts` (SQLite schema, filter indexes, and typed row mapping.)
 - `server/ollama.ts` (JSON schema analysis and local assistant generation.)
 - `server/index.ts` (CRUD, search/filter, validation, and local server setup.)
+- `apps/default/src/components/AIAssistant.tsx` (Assistant search result coverage
+  and separation of displayed versus sent records.)
+- `apps/default/src/components/InboxGrid.tsx` and `apps/default/src/index.css`
+  (Refresh rendering and active modal styles.)
+- `vite.config.ts` (Root environment loading and configurable API proxy.)
 
 ## Open Questions & Areas Needing Investigation
-- Validate create/read/update/delete and filtering against the running API.
-- Verify Ollama failure handling and production static hosting.
+- No implementation questions remain. Follow-up PR creation, merge, review
+  thread resolution, and merged-branch cleanup are pending.
 
 ## Decisions Made & Rationale
 - Decision: Build a local Express, better-sqlite3, and Ollama application.
@@ -41,7 +51,9 @@ implemented, and the production build and SQLite-backed API checks pass.
   environment; version 12.5 installs and runs without a C++ toolchain.
 
 ## Next Immediate Steps
-1. No remaining implementation or verification steps.
+1. Commit and push `fix-review-feedback`, then create a follow-up PR to `main`.
+2. Merge the follow-up PR and reply to/resolve all 11 threads on merged PR #1.
+3. Delete merged local/remote feature branches while preserving `main`.
 
 ## Patterns & Recurring Issues Noticed
 - AI requests and local database access are isolated in the backend; frontend
@@ -55,3 +67,9 @@ implemented, and the production build and SQLite-backed API checks pass.
 - [2026-10-16] Typecheck and production build passed; exercised SQLite CRUD,
   search/filters, validation, production static hosting, and expected missing
   local-model error handling through the running API.
+- [2026-10-17] Found 11 unresolved review threads on merged PR #1; created
+  `fix-review-feedback` from current `origin/main` to address each one.
+- [2026-10-17] Typecheck and production build passed in an isolated clean
+  dependency copy. Mock-Ollama API verification passed for host validation,
+  CRUD/filtering, company redetection, concurrent edits, assistant metadata and
+  maximum bounded body size, and Vite's custom `PORT` proxy.

@@ -17,6 +17,27 @@ interface ChatMessage {
   queryType?: 'company' | 'department' | 'urgency' | 'date' | 'general';
 }
 
+type AssistantQueryType = NonNullable<ChatMessage['queryType']>;
+
+interface QueryFilters {
+  company?: string;
+  department?: string;
+  urgency?: InboxItem['urgency'];
+  itemType?: InboxItem['itemType'];
+  dateRange?: 'today' | 'yesterday' | 'week' | 'month';
+}
+
+interface AssistantSearchResult {
+  items: InboxItem[];
+  assistantItems: InboxItem[];
+  queryInfo: {
+    type: AssistantQueryType;
+    filters: QueryFilters;
+    searchTerms: string[];
+    totalFound: number;
+  };
+}
+
 interface PersonalizationSettings {
   name: string;
   avatar: string;
@@ -143,10 +164,10 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
     return iconMap[settings.avatar as keyof typeof iconMap] || Brain;
   };
 
-  const parseQuery = (query: string): { type: string; filters: any; searchTerms: string[] } => {
+  const parseQuery = (query: string): { type: AssistantQueryType; filters: QueryFilters; searchTerms: string[] } => {
     const queryLower = query.toLowerCase();
-    const filters: any = {};
-    let queryType = 'general';
+    const filters: QueryFilters = {};
+    let queryType: AssistantQueryType = 'general';
     
     // Extract search terms
     const searchTerms = queryLower.split(' ').filter(term => 
@@ -203,23 +224,25 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
     return { type: queryType, filters, searchTerms };
   };
 
-  const searchItems = (query: string): { items: InboxItem[]; queryInfo: any } => {
+  const searchItems = (query: string): AssistantSearchResult => {
     const { type, filters, searchTerms } = parseQuery(query);
     let filteredItems = [...items];
 
     // Apply company filter
     if (filters.company) {
+      const company = filters.company;
       filteredItems = filteredItems.filter(item => 
-        item.companyLabel.toLowerCase().includes(filters.company) ||
-        item.company.toLowerCase().includes(filters.company)
+        item.companyLabel.toLowerCase().includes(company) ||
+        item.company.toLowerCase().includes(company)
       );
     }
 
     // Apply department filter
     if (filters.department) {
+      const department = filters.department;
       filteredItems = filteredItems.filter(item => 
-        item.department === filters.department ||
-        item.departmentLabel.toLowerCase().includes(filters.department)
+        item.department === department ||
+        item.departmentLabel.toLowerCase().includes(department)
       );
     }
 
@@ -290,11 +313,12 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
 
     return { 
       items: filteredItems.slice(0, 8), // Limit to top 8 results
+      assistantItems: filteredItems.slice(0, 20),
       queryInfo: { type, filters, searchTerms, totalFound: filteredItems.length }
     };
   };
 
-  const generateResponse = (query: string, searchResult: { items: InboxItem[]; queryInfo: any }): string => {
+  const generateResponse = (query: string, searchResult: AssistantSearchResult): string => {
     const { items: relatedItems, queryInfo } = searchResult;
     const { type, filters, totalFound } = queryInfo;
     
@@ -399,15 +423,21 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ items }) => {
 
     const searchResult = searchItems(currentQuery);
     try {
-      const contextItems = searchResult.items.length > 0 ? searchResult.items : items.slice(0, 20);
-      const response = await askInboxAssistant(currentQuery, contextItems);
+      const matchesFound = searchResult.queryInfo.totalFound > 0;
+      const contextItems = matchesFound ? searchResult.assistantItems : items.slice(0, 20);
+      const contextTotal = matchesFound ? searchResult.queryInfo.totalFound : items.length;
+      const response = await askInboxAssistant(currentQuery, contextItems, {
+        matchingCount: searchResult.queryInfo.totalFound,
+        contextTotal,
+        matchesFound
+      });
       const assistantMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         type: 'assistant',
         content: response,
         timestamp: new Date(),
         relatedItems: searchResult.items,
-        queryType: searchResult.queryInfo.type as ChatMessage['queryType']
+        queryType: searchResult.queryInfo.type
       };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
