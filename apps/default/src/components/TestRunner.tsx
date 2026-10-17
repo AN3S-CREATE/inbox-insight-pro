@@ -147,7 +147,7 @@ const TestRunner: React.FC<TestRunnerProps> = ({ categories, onRunTests, isRunni
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .glow-text {
           text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
         }

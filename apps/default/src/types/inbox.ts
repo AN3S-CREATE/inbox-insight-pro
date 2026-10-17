@@ -16,6 +16,10 @@ export interface InboxItem {
   summary: string;
   recommendation: string;
   content: string;
+  category?: string;
+  entities?: string[];
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface FilterState {
@@ -25,4 +29,14 @@ export interface FilterState {
   itemType: string;
   dateRange: string;
   search: string;
+}
+
+export interface InboxAnalysis {
+  company: string;
+  department: InboxItem['department'];
+  urgency: InboxItem['urgency'];
+  summary: string;
+  recommendation: string;
+  category: string;
+  entities: string[];
 }

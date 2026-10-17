@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, Mail, Mic, FileText, Building2, User, Send, Loader2, Brain, CheckCircle, AlertTriangle, Upload, Play, Pause, Square } from 'lucide-react';
+import { X, Mail, Mic, FileText, Building2, User, Send, Loader2, Brain, CheckCircle, AlertTriangle, Play, Square } from 'lucide-react';
 import { createInboxItem } from '../services/api';
+import type { InboxItem } from '../types/inbox';
 
 interface AddItemModalProps {
   onClose: () => void;
@@ -8,7 +9,15 @@ interface AddItemModalProps {
 }
 
 export const AddItemModal: React.FC<AddItemModalProps> = ({ onClose, onItemAdded }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    title: string;
+    company: string;
+    itemType: InboxItem['itemType'];
+    personalNote: string;
+    sender: string;
+    recipient: string;
+    content: string;
+  }>({
     title: '',
     company: '',
     itemType: 'email',
@@ -26,19 +35,6 @@ export const AddItemModal: React.FC<AddItemModalProps> = ({ onClose, onItemAdded
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [recordingTime, setRecordingTime] = useState(0);
   const [recordingInterval, setRecordingInterval] = useState<NodeJS.Timeout | null>(null);
-
-  const companies = [
-    { value: 'comp-1', label: 'TechCorp Inc' },
-    { value: 'comp-2', label: 'Global Solutions' },
-    { value: 'comp-3', label: 'Innovation Labs' },
-    { value: 'comp-4', label: 'DataFlow Systems' },
-    { value: 'comp-5', label: 'CloudTech Partners' },
-    { value: 'comp-6', label: 'NextGen Ventures' },
-    { value: 'comp-7', label: 'Smart Industries' },
-    { value: 'comp-8', label: 'Digital Dynamics' },
-    { value: 'comp-9', label: 'Future Systems' },
-    { value: 'comp-10', label: 'Alpha Enterprises' }
-  ];
 
   const itemTypes = [
     { value: 'email', label: 'Email', icon: Mail, description: 'Email communications and forwards' },
@@ -109,16 +105,9 @@ export const AddItemModal: React.FC<AddItemModalProps> = ({ onClose, onItemAdded
     setLoading(true);
 
     try {
-      let contentToSubmit = formData.content;
-      
-      // If it's a voice note and we have audio, simulate transcription
-      if (formData.itemType === 'voice' && audioBlob) {
-        contentToSubmit = `Voice Note Transcript - ${formData.title}\n\n[Audio transcription would appear here in a real implementation]\n\nRecording Duration: ${formatTime(recordingTime)}\nRecorded: ${new Date().toLocaleString()}\n\n${formData.content}`;
-      }
-
       const result = await createInboxItem({
         ...formData,
-        content: contentToSubmit
+        content: formData.content
       });
       
       setSuccessMessage(result.message);
@@ -129,7 +118,7 @@ export const AddItemModal: React.FC<AddItemModalProps> = ({ onClose, onItemAdded
         onItemAdded();
       }, 2000);
     } catch (err) {
-      setError('Failed to create inbox item. Please try again.');
+      setError(err instanceof Error ? err.message : 'Failed to create inbox item.');
       console.error('Error creating item:', err);
     } finally {
       setLoading(false);
@@ -339,15 +328,10 @@ export const AddItemModal: React.FC<AddItemModalProps> = ({ onClose, onItemAdded
                 </div>
                 
                 <div className="industrial-card p-4 bg-black/50">
-                  <h5 className="industrial-subtitle text-sm mb-2">TRANSCRIPTION FEATURES:</h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs industrial-text">
-                    <div>• Real-time audio-to-text conversion</div>
-                    <div>• Speaker identification</div>
-                    <div>• Automatic punctuation</div>
-                    <div>• Keyword extraction</div>
-                    <div>• Meeting summary generation</div>
-                    <div>• Action item detection</div>
-                  </div>
+                  <p className="industrial-text text-xs">
+                    Recordings stay in this form for playback only. They are not saved or transcribed.
+                    Paste a transcript into the content field for local AI analysis.
+                  </p>
                 </div>
               </div>
             </div>
@@ -360,18 +344,13 @@ export const AddItemModal: React.FC<AddItemModalProps> = ({ onClose, onItemAdded
             </label>
             <div className="relative">
               <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <select
+              <input
+                type="text"
                 value={formData.company}
                 onChange={(e) => updateFormData('company', e.target.value)}
                 className="industrial-input w-full pl-10"
-              >
-                <option value="">LET AI DETECT COMPANY AUTOMATICALLY</option>
-                {companies.map(company => (
-                  <option key={company.value} value={company.value}>
-                    {company.label}
-                  </option>
-                ))}
-              </select>
+                placeholder="COMPANY NAME (OR LEAVE BLANK)"
+              />
             </div>
             <p className="text-xs industrial-text mt-1">
               AI will analyze email domains, signatures, and content to identify the company
