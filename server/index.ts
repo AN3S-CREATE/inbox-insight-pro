@@ -6,11 +6,26 @@ import { resolve } from 'node:path';
 import { z } from 'zod';
 import { database, getItemById, mapItem } from './database.js';
 import { analyzeContent, answerQuery, OllamaError } from './ollama.js';
-import { departments, itemTypes, urgencies, type InboxItem, type ItemInput } from './types.js';
+import {
+  departments,
+  itemTypes,
+  urgencies,
+  type AssistantContextItem,
+  type AssistantContextMetadata,
+  type InboxItem,
+  type ItemInput
+} from './types.js';
 
 const app = express();
 const port = Number(process.env.PORT ?? 3001);
 app.disable('x-powered-by');
+app.use((req, res, next) => {
+  const hostname = req.hostname.toLowerCase().replace(/^\[|\]$/g, '');
+  if (!['localhost', '127.0.0.1', '::1'].includes(hostname)) {
+    return res.status(403).json({ error: 'Requests must use a loopback host.' });
+  }
+  return next();
+});
 app.use(express.json({ limit: '1mb' }));
 
 app.use((req, res, next) => {
@@ -237,15 +252,24 @@ app.put('/api/items/:id', async (req, res, next) => {
           content: input.content,
           sender: input.sender ?? existing.sender,
           recipient: input.recipient ?? existing.recipient,
-          company: input.company ?? existing.company,
+          company: input.company,
           itemType: input.itemType ?? existing.itemType
         })
       : undefined;
+    if (analysis) {
+      const latest = getItemById(req.params.id);
+      if (!latest) return res.status(404).json({ error: 'Item not found' });
+      if (JSON.stringify(latest) !== JSON.stringify(existing)) {
+        return res.status(409).json({ error: 'Item changed while analysis was running. Fetch the latest item and retry.' });
+      }
+    }
     const { reanalyze: _reanalyze, ...fields } = input;
     const item = writeItem({
       ...existing,
       ...fields,
-      company: fields.company ?? analysis?.company,
+      company: analysis
+        ? (fields.company?.trim() ? fields.company : analysis.company)
+        : fields.company,
       department: fields.department ?? analysis?.department,
       urgency: fields.urgency ?? analysis?.urgency,
       summary: fields.summary ?? analysis?.summary,
@@ -276,24 +300,53 @@ app.post('/api/analyze', async (req, res, next) => {
 });
 
 app.post('/api/query', async (req, res, next) => {
+  const assistantItemSchema = z.object({
+    id: z.string().max(100),
+    title: z.string().max(500),
+    company: z.string().max(300),
+    companyLabel: z.string().max(300),
+    itemType: z.enum(itemTypes),
+    itemTypeLabel: z.string().max(50),
+    personalNote: z.string().max(1_000),
+    sender: z.string().max(500),
+    recipient: z.string().max(500),
+    department: z.enum(departments),
+    departmentLabel: z.string().max(100),
+    urgency: z.enum(urgencies),
+    urgencyLabel: z.string().max(20),
+    dateTime: z.string().max(50),
+    summary: z.string().max(1_500),
+    recommendation: z.string().max(1_500),
+    content: z.string().max(1_500),
+    category: z.string().max(300)
+  });
   const parsed = z.object({
     query: z.string().trim().min(1).max(2_000),
-    items: z.array(z.object({
-      id: z.string(),
-      title: z.string(),
-      companyLabel: z.string(),
-      departmentLabel: z.string(),
-      urgency: z.enum(urgencies),
-      dateTime: z.string(),
-      summary: z.string(),
-      recommendation: z.string(),
-      content: z.string()
-    })).max(50)
+    items: z.array(assistantItemSchema).max(20),
+    context: z.object({
+      matchingCount: z.number().int().nonnegative(),
+      contextTotal: z.number().int().nonnegative(),
+      includedCount: z.number().int().nonnegative().max(20),
+      omittedCount: z.number().int().nonnegative(),
+      matchesFound: z.boolean()
+    })
   }).safeParse(req.body);
   if (!parsed.success) return badRequest(res, parsed.error);
+  if (
+    parsed.data.context.includedCount !== parsed.data.items.length ||
+    parsed.data.context.omittedCount !== Math.max(0, parsed.data.context.contextTotal - parsed.data.items.length) ||
+    parsed.data.context.matchesFound !== (parsed.data.context.matchingCount > 0) ||
+    (parsed.data.context.matchesFound
+      ? parsed.data.context.contextTotal !== parsed.data.context.matchingCount ||
+        parsed.data.context.includedCount > parsed.data.context.matchingCount
+      : parsed.data.context.contextTotal < parsed.data.context.includedCount)
+  ) {
+    return res.status(400).json({ error: 'Assistant context metadata does not match the supplied records.' });
+  }
   try {
-    const contextItems = parsed.data.items as InboxItem[];
-    return res.json({ response: await answerQuery(parsed.data.query, contextItems) });
+    const contextItems = parsed.data.items as AssistantContextItem[];
+    const context = parsed.data.context as AssistantContextMetadata;
+    return res.json({ response: await answerQuery(parsed.data.query, contextItems, context) });
   } catch (error) {
     return next(error);
   }

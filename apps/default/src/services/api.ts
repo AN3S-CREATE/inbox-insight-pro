@@ -150,13 +150,69 @@ export async function analyzeInboxContent(input: {
   return response.analysis;
 }
 
+export interface AssistantContextMetadata {
+  matchingCount: number;
+  contextTotal: number;
+  includedCount: number;
+  omittedCount: number;
+  matchesFound: boolean;
+}
+
+const contextFieldLimits = {
+  id: 100,
+  title: 500,
+  company: 300,
+  companyLabel: 300,
+  itemTypeLabel: 50,
+  personalNote: 1_000,
+  sender: 500,
+  recipient: 500,
+  departmentLabel: 100,
+  urgencyLabel: 20,
+  dateTime: 50,
+  summary: 1_500,
+  recommendation: 1_500,
+  content: 1_500,
+  category: 300
+} as const;
+
+function limitContextItem(item: InboxItem) {
+  return {
+    id: item.id.slice(0, contextFieldLimits.id),
+    title: item.title.slice(0, contextFieldLimits.title),
+    company: item.company.slice(0, contextFieldLimits.company),
+    companyLabel: item.companyLabel.slice(0, contextFieldLimits.companyLabel),
+    itemType: item.itemType,
+    itemTypeLabel: item.itemTypeLabel.slice(0, contextFieldLimits.itemTypeLabel),
+    personalNote: item.personalNote.slice(0, contextFieldLimits.personalNote),
+    sender: item.sender.slice(0, contextFieldLimits.sender),
+    recipient: item.recipient.slice(0, contextFieldLimits.recipient),
+    department: item.department,
+    departmentLabel: item.departmentLabel.slice(0, contextFieldLimits.departmentLabel),
+    urgency: item.urgency,
+    urgencyLabel: item.urgencyLabel.slice(0, contextFieldLimits.urgencyLabel),
+    dateTime: item.dateTime.slice(0, contextFieldLimits.dateTime),
+    summary: item.summary.slice(0, contextFieldLimits.summary),
+    recommendation: item.recommendation.slice(0, contextFieldLimits.recommendation),
+    content: item.content.slice(0, contextFieldLimits.content),
+    category: item.category?.slice(0, contextFieldLimits.category) ?? ''
+  };
+}
+
 export async function askInboxAssistant(
   query: string,
-  items: InboxItem[]
+  items: InboxItem[],
+  metadata: Omit<AssistantContextMetadata, 'includedCount' | 'omittedCount'>
 ): Promise<string> {
+  const contextItems = items.slice(0, 20).map(limitContextItem);
+  const context = {
+    ...metadata,
+    includedCount: contextItems.length,
+    omittedCount: Math.max(0, metadata.contextTotal - contextItems.length)
+  };
   const response = await request<{ response: string }>('/query', {
     method: 'POST',
-    body: JSON.stringify({ query, items: items.slice(0, 50) })
+    body: JSON.stringify({ query: query.slice(0, 2_000), items: contextItems, context })
   });
   return response.response;
 }

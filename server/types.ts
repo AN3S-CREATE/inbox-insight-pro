@@ -40,6 +40,36 @@ export interface InboxItem {
   updatedAt: string;
 }
 
+export type AssistantContextItem = Pick<
+  InboxItem,
+  | 'id'
+  | 'title'
+  | 'company'
+  | 'companyLabel'
+  | 'itemType'
+  | 'itemTypeLabel'
+  | 'personalNote'
+  | 'sender'
+  | 'recipient'
+  | 'department'
+  | 'departmentLabel'
+  | 'urgency'
+  | 'urgencyLabel'
+  | 'dateTime'
+  | 'summary'
+  | 'recommendation'
+  | 'content'
+  | 'category'
+>;
+
+export interface AssistantContextMetadata {
+  matchingCount: number;
+  contextTotal: number;
+  includedCount: number;
+  omittedCount: number;
+  matchesFound: boolean;
+}
+
 export interface ItemInput {
   title: string;
   company?: string;
